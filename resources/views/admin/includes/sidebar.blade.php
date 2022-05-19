@@ -1,4 +1,4 @@
-<div class="left side-menu">
+<div class="left side-menu" style="font-size: 12px!important">
     <div class="sidebar-inner slimscrollleft">
         <div class="user-details">
             <div class="pull-left">
@@ -24,8 +24,9 @@
             </div>
         </div>
         <!--- Divider -->
-        <div id="sidebar-menu">
-            <ul>
+        <div id="sidebar-menu" style=" height: 600px;
+  overflow-y: scroll;">
+            <ul >
 
                 
 
@@ -55,12 +56,12 @@
 
 
 
-            <li data-id = "doctor" class="dropdown doctor_drop dropdown_lef @if(request()->segment(2)=="manage-doctor-banner" || request()->segment(2)=="manage-about-doctor" || request()->segment(2)=="manage-provider" || request()->segment(2)=="manage-common-uses") open @endif ">
+            <li data-id = "doctor" class="dropdown doctor_drop dropdown_lef @if(request()->segment(2)=="manage-doctor-banner" || request()->segment(2)=="manage-about-doctor" || request()->segment(2)=="manage-provider" || request()->segment(2)=="manage-common-uses" ||request()->segment(2)=="manage-youtube-link") open @endif ">
 
-                                <a href="#" class="waves-effect dropdown-toggle @if(request()->segment(2)=="manage-doctor-banner" || request()->segment(2)=="manage-about-doctor" || request()->segment(2)=="manage-provider" || request()->segment(2)=="manage-common-uses") subdrop @endif" data-toggle="dropdown">
+                                <a href="#" class="waves-effect dropdown-toggle @if(request()->segment(2)=="manage-doctor-banner" || request()->segment(2)=="manage-about-doctor" || request()->segment(2)=="manage-provider" || request()->segment(2)=="manage-common-uses" ||request()->segment(2)=="manage-youtube-link") subdrop @endif" data-toggle="dropdown">
                                 <i class="fa fa-user-md" aria-hidden="true"></i><span> Doctor </span><span class="caret"></span>
                                 </a>
-                                <ul class="dropdown-menu sub_menu" @if(request()->segment(2)=="manage-doctor-banner" || request()->segment(2)=="manage-about-doctor" || request()->segment(2)=="manage-provider" || request()->segment(2)=="manage-common-uses") style="display: block;" @endif  id="d_doctor">
+                                <ul class="dropdown-menu sub_menu" @if(request()->segment(2)=="manage-doctor-banner" || request()->segment(2)=="manage-about-doctor" || request()->segment(2)=="manage-provider" || request()->segment(2)=="manage-common-uses" ||request()->segment(2)=="manage-youtube-link") style="display: block;" @endif  id="d_doctor">
 
 
                                  <li><a href="{{route('manage.doctor.banner')}}" class="waves-effect @if(Request::segment(2)=="manage-doctor-banner") active @endif"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><span>Banner Management</span></a></li>
@@ -70,6 +71,8 @@
                                  <li><a href="{{route('manage.doctor.provider')}}" class="waves-effect @if(Request::segment(2)=="manage-provider") active @endif"><i class="fa fa-user" aria-hidden="true"></i><span>Manage Provider</span></a></li>
 
                                  <li><a href="{{route('admin.manage.common.use')}}" class="waves-effect @if(Request::segment(2)=="manage-common-uses") active @endif"><i class="fa fa-shopping-basket" aria-hidden="true"></i><span>Manage Common Uses</span></a></li>
+
+                                 <li><a href="{{route('admin.manage.youtube.link')}}" class="waves-effect @if(Request::segment(2)=="manage-youtube-link") active @endif"><i class="fa fa-youtube" aria-hidden="true"></i><span>Manage Youtube Link</span></a></li>
                         </ul>
             </li>
 
@@ -90,6 +93,15 @@
                 <li><a href="{{route('admin.manage.prescription')}}" class="waves-effect @if(Request::segment(2)=="manage-prescription") active @endif"><i class="fa fa-file-text-o" aria-hidden="true"></i><span> Manage Prescription</span></a></li>
 
                 <li><a href="{{route('admin.manage.pdf')}}" class="waves-effect @if(Request::segment(2)=="manage-pdf") active @endif"><i class="fa fa-file" aria-hidden="true"></i><span> Manage Pdf</span></a></li>
+
+                <li><a href="{{route('admin.manage.logo')}}" class="waves-effect @if(Request::segment(2)=="manage-logo") active @endif"><i class="fa fa-spinner" aria-hidden="true"></i><span> Manage Logo</span></a></li>
+
+                <li><a href="{{route('admin.manage.navbar')}}" class="waves-effect @if(Request::segment(2)=="manage-navbar") active @endif"><i class="fa fa-link" aria-hidden="true"></i><span> Manage Navbar Links</span></a></li>
+
+                <li><a href="{{route('admin.manage.fotter')}}" class="waves-effect @if(Request::segment(2)=="manage-footer") active @endif"><i class="fa fa-forumbee" aria-hidden="true"></i><span> Manage Fotter</span></a></li>
+
+
+
 
 
             </ul>

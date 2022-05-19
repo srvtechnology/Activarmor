@@ -2,7 +2,7 @@
 
 
 @section('title')
-<title>Activarmor | Manage Doctor Banner</title>
+<title>Activarmor | Manage Product Info Link</title>
 @endsection
 
 @section('style')
@@ -61,12 +61,8 @@
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
-                    <h4 class="pull-left page-title">Manage Doctor Banner</h4>
-                    <ol class="breadcrumb pull-right">
-                    <li class="active"><a href="{{route('admin.manage.doctor.banner.heading.view')}}">Heading Management</a></li>
+                    <h4 class="pull-left page-title">Manage Product Info Link</h4>
                     
-                    <li class="active"><a href="{{route('admin.manage.doctor.banner.sub.heading.view')}}">Sub Heading Management</a></li>
-                  </ol>
                 </div>
             </div>
             <div class="row">
@@ -75,53 +71,18 @@
                     <div class="panel panel-default">
                         <div class="panel-heading rm02 rm04">
                           @include('admin.includes.message')
-                            <form role="form" action="{{route('manage.doctor.banner.update')}}" method="post" id="banner" enctype="multipart/form-data">
+                            <form role="form" action="{{route('admin.manage.youtube.link.update')}}" method="post" id="banner" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="page" value="" id="page">
 
 
-                                  
-                
-
-
-
-
-
-
-
-                                <div class="form-group rm03">
-                                  @if(@$data->image=='')
-                                     <img src="{{ URL::to('public/admin/assets/images/videos2.jpg')}}" style="width: 100%;height: 400px" id="img2">
-                                  @else
-                                    <img src="{{ URL::to('storage/app/public/banner_min')}}/{{@$data->image}}" style="width: 100%;height: 400px" id="img2">
-                                  @endif            
-                                 </div>
-
-                                
-
-                                  <div class="form-group">
-                                        <label for="Email">Image</label>
-                                        <div class="uplodimgfil">
-                                            <input type="file" name="image" id="icon" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" onchange="fun1()" />
-                                           {{--  <input type="file" id="icon" name="image"   class="inputfile inputfile-1" onchange="fun1()">
-                                             <input type="hidden" name="profile_picture"  > --}}
-                                            <label for="icon">Upload Image<img src="{{ URL::to('public/admin/assets/images/clickhe.png')}}" alt=""></label>
-                                        </div>
-                                       <div id="err_image"></div>
-                                  </div>
-
-                                  
-
-                                  {{-- <div class="form-group rm03">
-                                        <label for="Email">Heading One</label>
-                                        <input type="text" name="heading_one" class="form-control" value="{{@$data->heading_one}}">
-                                        
-                                  </div>
-
                                   <div class="form-group rm03">
-                                        <label for="Email">Heading Two</label>
-                                        <input type="text" name="heading_two" class="form-control" value="{{@$data->heading_two}}">
-                                  </div> --}}
+                                        <label for="Email">Youtube Link</label>
+                                        <input type="text" name="link" class="form-control" value="{{@$data->link}}">
+                                   </div>
+
+                                   
+                                  
 
                                   
 
@@ -173,13 +134,13 @@
                  $(function(){
                   $('#banner').validate({
                   rules:{
-                    heading_one:{
+                    heading:{
                       required:true,
                       // minlength : 10,
                       // maxlength:100,
                     },
 
-                    heading_two:{
+                    description:{
                       required:true,
                       // minlength : 10,
                       // maxlength:100,

@@ -115,6 +115,85 @@ Route::group(['namespace' => 'Admin'], function() {
     Route::get('manage-pdf/edit/{id}','Modules\Pdf\PdfController@edit')->name('admin.manage.pdf.edit');
     Route::post('manage-pdf/update','Modules\Pdf\PdfController@update')->name('admin.manage.pdf.update');
      Route::get('manage-pdf/download-pdf/{id}','Modules\Pdf\PdfController@downloadPdf')->name('admin.manage.pdf.download');
+
+    // manage-logo 
+     Route::get('manage-logo','Modules\Image\ImageController@logo')->name('admin.manage.logo');
+     Route::post('manage-logo/update','Modules\Image\ImageController@update')->name('admin.manage.update');
+
+
+     // manage-navbar
+     Route::get('manage-navbar','Modules\Image\ImageController@navbar')->name('admin.manage.navbar');
+     Route::get('manage-navbar/status/{id}','Modules\Image\ImageController@status')->name('admin.manage.navbar.status');
+     Route::get('manage-navbar/edit/{id}','Modules\Image\ImageController@edit')->name('admin.manage.navbar.edit');
+     Route::post('manage-navbar/update','Modules\Image\ImageController@updateNvabr')->name('admin.manage.navbar.update');
+
+
+     // manage-heading 
+     Route::get('banner/manage-heading','Modules\Heading\HeadingController@index')->name('admin.manage.heading.banner');
+     Route::get('banner/manage-heading/add','Modules\Heading\HeadingController@addView')->name('admin.manage.heading.banner.add');
+     Route::post('manage-heading/insert','Modules\Heading\HeadingController@add')->name('admin.manage.heading.insert');
+     Route::get('banner/manage-heading/edit/{id}','Modules\Heading\HeadingController@edit')->name('admin.manage.heading.banner.edit');
+     Route::post('manage-heading/update','Modules\Heading\HeadingController@update')->name('admin.manage.heading.update');
+     Route::get('manage-heading/delete/{id}','Modules\Heading\HeadingController@delete')->name('admin.manage.heading.delete');
+
+     Route::get('manage-doctor-banner/manage-heading','Modules\Heading\HeadingController@doctorHeading')->name('admin.manage.doctor.banner.heading.view');
+
+     Route::get('manage-doctor-banner/manage-heading/add','Modules\Heading\HeadingController@doctorHeadingAdd')->name('admin.manage.doctor.banner.heading.add.view');
+
+     Route::get('manage-doctor-banner/manage-heading/edit/{id}','Modules\Heading\HeadingController@doctorHeadingEdit')->name('admin.manage.doctor.banner.heading.edit.view');
+
+
+     Route::get('manage-doctor-banner/manage-sub-heading','Modules\Heading\HeadingController@doctorSubHeading')->name('admin.manage.doctor.banner.sub.heading.view');
+
+     Route::get('manage-doctor-banner/manage-sub-heading/add','Modules\Heading\HeadingController@doctorSubHeadingAdd')->name('admin.manage.doctor.banner.sub.heading.add.view');
+
+     Route::get('manage-doctor-banner/manage-sub-heading/edit/{id}','Modules\Heading\HeadingController@doctorSubHeadingEdit')->name('admin.manage.doctor.banner.sub.heading.edit.view');
+
+
+
+
+
+     // patient 
+     Route::get('manage-patient-banner/manage-heading','Modules\Heading\HeadingController@patientHeading')->name('admin.manage.patient.banner.heading.view');
+
+     Route::get('manage-patient-banner/add','Modules\Heading\HeadingController@patientHeadingAdd')->name('admin.manage.patient.banner.heading.add.view');
+
+     Route::get('manage-patient-banner/edit/{id}','Modules\Heading\HeadingController@patientHeadingEdit')->name('admin.manage.patient.banner.heading.edit.view');
+
+     
+
+     Route::get('manage-patient-banner/manage-sub-heading','Modules\Heading\HeadingController@patientSubHeading')->name('admin.manage.patient.banner.sub.heading.view');
+
+     Route::get('manage-patient-banner/manage-sub-heading/add','Modules\Heading\HeadingController@patientSubHeadingAdd')->name('admin.manage.patient.banner.sub.heading.add.view');
+
+     Route::get('manage-patient-banner/manage-sub-heading/edit/{id}','Modules\Heading\HeadingController@patientSubHeadingEdit')->name('admin.manage.patient.banner.sub.heading.edit.view');
+
+
+
+
+     // manage-sub-heading 
+     Route::get('banner/manage-sub-heading','Modules\Heading\HeadingController@subHeading')->name('admin.manage.sub.heading.banner');
+     Route::get('banner/manage-sub-heading/add','Modules\Heading\HeadingController@subHeadingaddView')->name('admin.manage.sub.heading.banner.add.view');
+     Route::post('manage-sub-heading/insert','Modules\Heading\HeadingController@subHeadingadd')->name('admin.manage.sub.heading.insert');
+     Route::get('banner/manage-sub-heading/edit/{id}','Modules\Heading\HeadingController@subHeadingedit')->name('admin.manage.sub.heading.banner.edit');
+      Route::post('manage-sub-heading/update','Modules\Heading\HeadingController@updateSubHeading')->name('admin.manage.sub.heading.update');
+      Route::get('manage-sub-heading/delete/{id}','Modules\Heading\HeadingController@deleteSubHeading')->name('admin.manage.sub.heading.delete');
+
+
+      // manage-youtube-link
+      Route::get('manage-youtube-link','Modules\Doctor\DoctorController@youtube')->name('admin.manage.youtube.link');
+      Route::post('manage-youtube-link/update-link','Modules\Doctor\DoctorController@youtubeUpdate')->name('admin.manage.youtube.link.update');
+
+      // manage-footer
+      Route::get('manage-footer','Modules\Fotter\FotterController@index')->name('admin.manage.fotter');
+      Route::post('manage-footer/update','Modules\Fotter\FotterController@update')->name('admin.manage.fotter.update');
+
+
+
+
+
+
+
     // Verify
     // Route::get('email/resend', 'Auth\VerificationController@resend')->name('admin.verification.resend');
     // Route::get('email/verify', 'Auth\VerificationController@show')->name('admin.verification.notice');

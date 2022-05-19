@@ -106,6 +106,28 @@
                                        <div id="err_image"></div>
                                   </div>
 
+                                  <div class="clearfix"></div>
+
+                                  <div class="form-group">
+                                        <label for="Email">Contact BG Image</label>
+                                        <div class="uplodimgfil">
+                                            <input type="file" name="bg_image" id="icon2"  onchange="fun2()" />
+                                           {{--  <input type="file" id="icon" name="image"   class="inputfile inputfile-1" onchange="fun1()">
+                                             <input type="hidden" name="profile_picture"  > --}}
+                                            <label for="icon2">Upload Image<img src="{{ URL::to('public/admin/assets/images/clickhe.png')}}" alt=""></label>
+                                        </div>
+                                       <div id="err_image"></div>
+                                  </div>
+
+                                  <div class="form-group rm03">
+                                    {{-- <label>Image</label> --}}
+                                  @if(@$data->bg_image=='')
+                                     <img src="{{ URL::to('public/admin/assets/images/videos2.jpg')}}" style="width: 100%;height: 300px" id="img3">
+                                  @else
+                                    <img src="{{ URL::to('storage/app/public/bg_image')}}/{{@$data->bg_image}}" style="width: 100%;height: 300px" id="img3">
+                                  @endif            
+                                 </div>
+
                                   
 
                                   <div class="form-group rm03">
@@ -194,7 +216,13 @@
               })
              </script>
 
-
+<script>
+        function fun2(){
+        var i=document.getElementById('icon2').files[0];
+        var b=URL.createObjectURL(i);
+        $("#img3").attr("src",b);
+    }
+</script>
 
 
 

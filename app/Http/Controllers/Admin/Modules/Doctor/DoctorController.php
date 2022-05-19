@@ -9,6 +9,7 @@ use App\Models\DoctorWhy;
 use Image;
 use App\Models\Provider;
 use App\Models\CommonUse;
+use App\Youtube;
 class DoctorController extends Controller
 {
 
@@ -153,5 +154,24 @@ class DoctorController extends Controller
         }
         CommonUse::where('id',1)->update($upd);
         return redirect()->back()->with('success','Data Updated Succesfully');
+    }
+
+    public function youtube()
+    {
+        $data = [];
+        $data['data'] = Youtube::where('id',1)->first();
+        return view('admin.doctor.youtube',$data);
+    }
+
+    public function youtubeUpdate(Request $request)
+    {
+        parse_str( parse_url($request->link, PHP_URL_QUERY ), $my_array_of_vars );
+
+        // return ;    
+        $upd = [];
+        $upd['link'] = $request->link;
+        $upd['code'] = $my_array_of_vars['v'];
+        Youtube::where('id',1)->update($upd);
+        return redirect()->back()->with('success','Youtube Link Updated Successfully');
     }
 }

@@ -3,8 +3,12 @@
       <div class="main-footer max-theme-width">
         <div class="row">
           <div class="col-lg-3 col-md-6 mb-4 col-12">
+            @php
+            $data = DB::table('image')->where('id',1)->first();
+            @endphp
+
             <div class="f-logo">
-              <img src="{{asset('public/frontend/assets/img/footer/footer-logo.png')}}" alt="" />
+              <img src="{{ URL::to('storage/app/public/footer_logo')}}/{{@$data->footer_logo}}" alt="" />
             </div>
             <p class="p-1">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam

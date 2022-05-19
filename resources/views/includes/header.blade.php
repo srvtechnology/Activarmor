@@ -20,7 +20,11 @@
       <div class="max-theme-width">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="{{route('index')}}">
-            <img src="{{asset('public/frontend/assets/img/home/header/logo.png')}}" alt="" width="100" />
+
+            @php
+            $data = DB::table('image')->where('id',1)->first();
+            @endphp
+            <img src="{{ URL::to('storage/app/public/logo')}}/{{@$data->logo}}" alt="" width="100" />
           </a>
           <button
             class="navbar-toggler"
@@ -34,29 +38,52 @@
             <span class="navbar-toggler-icon"></span>
           </button>
 
+          @php
+          $navbar = DB::table('navbar')->get();
+          @endphp
+
+
+
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item"><a class="nav-link @if(Route::is('index')) active @endif" href="{{route('index')}}">Home</a></li>
+
+              @if($navbar[0]->status=="A")
+              <li class="nav-item"><a class="nav-link @if(Route::is('index')) active @endif" href="{{route('index')}}">{{$navbar[0]->name}}</a></li>
+              @endif
+
+
+              @if($navbar[1]->status=="A")
               <li class="nav-item">
-                <a class="nav-link @if(Route::is('doctor.page')) active @endif" href="{{route('doctor.page')}} ">For Doctor</a>
+                <a class="nav-link @if(Route::is('doctor.page')) active @endif" href="{{route('doctor.page')}} ">{{$navbar[1]->name}}</a>
               </li>
+              @endif
+
+              @if($navbar[2]->status=="A")
               <li class="nav-item">
-                <a class="nav-link @if(Route::is('patient.page')) active @endif" href="{{route('patient.page')}}">For Patients</a>
+                <a class="nav-link @if(Route::is('patient.page')) active @endif" href="{{route('patient.page')}}">{{$navbar[2]->name}}</a>
               </li>
+              @endif
+
+              @if($navbar[3]->status=="A")
               <li class="nav-item">
-                <a class="nav-link" href="http://patients.activarmor.me/" target="_blank">Get One</a>
+                <a class="nav-link" href="http://patients.activarmor.me/" target="_blank">{{$navbar[3]->name}}</a>
               </li>
+              @endif
+
+
+              @if($navbar[4]->status=="A")
               <li class="nav-item">
-                <a class="nav-link @if(Route::is('contact.page')) active @endif" href="{{route('contact.page')}}">Contact</a>
+                <a class="nav-link @if(Route::is('contact.page')) active @endif" href="{{route('contact.page')}}">{{$navbar[4]->name}}</a>
               </li>
+              @endif
 
           
 
 
-
+               @if($navbar[5]->status=="A")
               @if(!Auth::check())
               <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#loginModal"  href="{{route('contact.page')}}">Login</a>
+                <a class="nav-link" data-toggle="modal" data-target="#loginModal"  href="{{route('contact.page')}}">{{$navbar[5]->name}}</a>
               </li>
               @endif
               @if(Auth::check())
@@ -82,6 +109,8 @@
              {{--  <li class="nav-item">
                 <a class="nav-link" href="{{route('logout')}}">Logout</a>
               </li> --}}
+              @endif
+
               @endif
             </ul>
         {{--     <div class="search">

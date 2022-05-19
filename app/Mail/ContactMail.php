@@ -33,7 +33,7 @@ class ContactMail extends Mailable
         $subject=env('APP_NAME')." - A new contact";
         
         return $this->view('mail.contact', $data)
-                     ->to('rishavbeas@gmail.com')
+                     ->to('vikrantsingh.slg@gmail.com')
                      ->subject($subject)
                      ->from(env('MAIL_USERNAME'),env('APP_NAME'));
     }

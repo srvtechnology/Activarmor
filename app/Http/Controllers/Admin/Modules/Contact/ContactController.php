@@ -69,6 +69,15 @@ class ContactController extends Controller
             $image->move("storage/app/public/contact",$filename);    
             $upd['image'] = $filename;
         }
+
+        if ($request->bg_image) {
+           @unlink('storage/app/public/bg_image/'.$contact->bg_image);
+           $image = $request->bg_image;
+           $filename = time() . '-' . rand(1000, 9999) . '.' . $image->getClientOriginalExtension();
+           //real image
+            $image->move("storage/app/public/bg_image",$filename);    
+            $upd['bg_image'] = $filename;
+        }
         ContactPage::where('id',1)->update($upd);
         return redirect()->back()->with('success','Data Updated Succesfully');
     }

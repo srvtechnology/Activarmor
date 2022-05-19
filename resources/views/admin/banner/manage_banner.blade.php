@@ -62,6 +62,11 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h4 class="pull-left page-title">Manage Banner</h4>
+                    <ol class="breadcrumb pull-right">
+                        <li class="active"><a href="{{route('admin.manage.heading.banner')}}">Heading Management</a></li>
+                        <li class="active"><a href="{{route('admin.manage.sub.heading.banner')}}">Sub Heading Management</a></li>
+                        
+                    </ol>
                     
                 </div>
             </div>
@@ -106,7 +111,7 @@
                                   </div>
 
 
-                                  <div class="form-group rm03">
+                                  {{-- <div class="form-group rm03">
                                         <label for="Email">Heading One</label>
                                         <input type="text" name="banner_heading_one" class="form-control" value="{{@$data->banner_heading_one}}">
                                    </div>
@@ -154,7 +159,7 @@
                                   <div class="form-group rm03">
                                         <label for="Email">Sub Heading Five</label>
                                         <textarea class="form-control" name="heading_five" rows="2">{{@$data->heading_five}}</textarea>
-                                  </div>
+                                  </div> --}}
 
 
 
