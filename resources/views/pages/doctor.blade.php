@@ -20,7 +20,12 @@ option{background: black}
 </style> 
 @endsection
 
+@php
+ $data = DB::table('image')->where('id',1)->first();
+@endphp
 
+<meta property="og:url" content="{{URL::current()}}">
+<meta property="og:image" content="{{ URL::to('storage/app/public/logo')}}/{{@$data->logo}}" alt="">
 
 
 
@@ -42,15 +47,20 @@ option{background: black}
   background-repeat: no-repeat;">
       <div class="max-theme-width">
         <div class="list-main my-auto">
-          <div class="list-item">
-            <img src="{{asset('public/frontend/assets/img/home/banner/check.png')}}" alt="" />
-            <span
-              >{{@$banner->heading_one}}</span
-            >
+           <div class="heading">
+            @foreach(@$heading as $value)
+            <h4 class="custom" style="font-size: 60px;">{!!@$value->name!!}</h4>
+            @endforeach
+            
           </div>
-          <div class="list-item">
-            <img src="{{asset('public/frontend/assets/img/home/banner/check.png')}}" alt="" />
-            <span>{{@$banner->heading_two}}</span>
+          <div class="list-main my-auto">
+            @foreach(@$sub_heading as $value)
+            <div class="list-item">
+              <img src="{{asset('public/frontend/assets/img/home/banner/check.png')}}" alt="" />
+              <span>{!!@$value->name!!}</span>
+            </div>
+            @endforeach
+            
           </div>
         </div>
       </div>
@@ -140,9 +150,22 @@ option{background: black}
               <h4 class="heading">
                 {{@$common->heading}}
               </h4>
-              <p class="para">
-                {{@$common->description}}
-              </p>
+              <div class="main-lists">
+                <div class="row">
+                  @foreach(@$uses as $value)
+                  <div class="col-md-6 col-12">
+                    <div class="lists" style="display: flex;
+    align-items: center;
+    gap: 15px;">
+                      <img src="{{asset('public/frontend/assets/img/patients/check.png')}}" alt="">
+                      <p class="text" style="color: #fff;
+    margin-top: 15px;">{{@$value->name}}</p>
+                    </div>
+                  </div>
+                  @endforeach
+                  
+                </div>
+              </div>
               <p>
                 @if(Session::has('suggestion'))
                   <div class="alert alert-success alert-dismissible" style="text-align: center; margin-top: 10px;">
@@ -190,7 +213,7 @@ option{background: black}
                 @endif
               </div>
               <div class="btn-div my-3">
-                <button class="btn common-btn">Products info</a> <img src="{{asset('public/frontend/assets/img/doctor/play.png')}}" alt=""></button>
+                <button class="btn common-btn video_play" data-toggle="modal" data-target="#video_modal">Products info</a> <img src="{{asset('public/frontend/assets/img/doctor/play.png')}}" alt=""></button>
 
                 
                @if(Auth::check())
@@ -212,7 +235,12 @@ option{background: black}
     </div>
 
 <!-- -- contact --  -->
-    <div class="contact-us section-padding" id="contact_section">
+    <div class="contact-us section-padding" id="contact_section" style="background: url({{url('/')}}/storage/app/public/bg_image/{{$contact->bg_image}});background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+  transform: translateY(0px);">
       <div class="max-theme-width">
         <h4 class="heading">CONTACT US</h4>
         <p class="para">
@@ -252,7 +280,7 @@ option{background: black}
                <select class="form-control" name="country">
                 <option value="">Select Country</option>
                 @foreach($countries as $value) 
-                 <option value="{{@$value->name}} - {{@$value->sortname}}">{{@$value->name}} ({{@$value->sortname}})</option>
+                 <option value="{{@$value->name}} - {{+ @$value->phonecode}}">{{@$value->name}} (+ {{@$value->phonecode}})</option>
                   @endforeach
                </select>
               
@@ -313,6 +341,34 @@ option{background: black}
     </div>
 
     @include('includes.footer')
+
+
+
+<div class="modal fade" id="video_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content" style="width: 750px;height: 700px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Product Video</h5>
+        
+      </div>
+      @php
+      $youtube = DB::table('youtube_link')->where('id',1)->first();
+      @endphp
+
+
+      <div class="modal-body">
+        <iframe width="700" height="500"
+        src="https://www.youtube.com/embed/{{$youtube->code}}"}>
+        </iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.reload()">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 
@@ -559,6 +615,9 @@ option{background: black}
 
 
 
+
+
+
 @endsection
 @section('script')
 @include('includes.script')
@@ -789,6 +848,8 @@ option{background: black}
      @endif
   })
 </script> --}}
+
+
 
 
 

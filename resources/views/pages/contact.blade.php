@@ -9,7 +9,12 @@
 <style type="text/css">.error{color: red} option{background: black}</style>
 </style> 
 @endsection
+@php
+ $data = DB::table('image')->where('id',1)->first();
+@endphp
 
+<meta property="og:url" content="{{URL::current()}}">
+<meta property="og:image" content="{{ URL::to('storage/app/public/logo')}}/{{@$data->logo}}" alt="">
 
 
 
@@ -24,24 +29,43 @@
   min-height: 65vh;
   margin-top: 78px;
   display: flex;
-  background: url({{url('/')}}/storage/app/public/contact_min/{{$data->image}});
+  background: url({{url('/')}}/storage/app/public/contact/{{$contact->image}});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;">
     <div class="max-theme-width">
-      <h4 class="heading">contact us</h4>
+      <div class="heading">
+            @foreach(@$heading as $value)
+            <h4 class="custom" style="font-size: 60px;">{!!@$value->name!!}</h4>
+            @endforeach
+            
+          </div>
+          <div class="list-main my-auto">
+            @foreach(@$sub_heading as $value)
+            <div class="list-item">
+              <img src="{{asset('public/frontend/assets/img/home/banner/check.png')}}" alt="" />
+              <span>{!!@$value->name!!}</span>
+            </div>
+            @endforeach
+            
+          </div>
     </div>
   </div>
 
 <!-- -- contact --  -->
-    <div class="contact-us section-padding" id="contact_section">
+    <div class="contact-us section-padding" id="contact_section" style="background: url({{url('/')}}/storage/app/public/bg_image/{{$contact->bg_image}});background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+  transform: translateY(0px);">
       <div class="max-theme-width">
         <h4 class="heading">CONTACT US</h4>
         <p class="para">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi
           harum aliquid id, nam excepturi eum.
         </p>
-        <form id="contact" method="post" action="{{route('contact.us.submit')}}">
+        <form id="contact" method="post" action="{{route('contact.us.submit')}}" >
           @csrf
         <div class="form-card">
           @include('admin.includes.message')
@@ -74,7 +98,7 @@
                <select class="form-control" name="country">
                 <option value="">Select Country</option>
                 @foreach($countries as $value) 
-                 <option value="{{@$value->name}} - {{@$value->sortname}}">{{@$value->name}} ({{@$value->sortname}})</option>
+                 <option value="{{@$value->name}} - {{+ @$value->phonecode}}">{{@$value->name}} (+ {{@$value->phonecode}})</option>
                   @endforeach
                </select>
               
@@ -133,6 +157,8 @@
         </form>
       </div>
     </div>
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2096468.504292492!2d48.83187540678634!3d28.27481225009731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fc5363fbeea51a1%3A0x74726bcd92d8edd2!2sKuwait!5e0!3m2!1sen!2sin!4v1653060248894!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 @include('includes.footer')
 

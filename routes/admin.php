@@ -86,11 +86,37 @@ Route::group(['namespace' => 'Admin'], function() {
 
     // manage-common-uses
     Route::get('manage-common-uses','Modules\Doctor\DoctorController@commonUse')->name('admin.manage.common.use');
-    Route::post('manage-common-uses/update','Modules\Doctor\DoctorController@commonUseUpdate')->name('admin.manage.common.use.update');
+    Route::post('manage-common-uses/update/new','Modules\Doctor\DoctorController@commonUseUpdate')->name('admin.manage.common.use.update.new');
+
+    Route::get('manage-common-uses/list','Modules\Doctor\DoctorController@commonUseList')->name('admin.manage.doctor.common.use.list');
+
+    Route::get('manage-common-uses/add','Modules\Doctor\DoctorController@commonUseAddView')->name('admin.manage.doctor.common.use.add.view');
+
+    Route::post('manage-common-uses/insert','Modules\Doctor\DoctorController@commonUseInsert')->name('admin.manage.doctor.common.use.insert');
+
+    Route::get('manage-common-uses/edit/{id}','Modules\Doctor\DoctorController@commonUseEdit')->name('admin.manage.doctor.common.use.edit');
+
+    Route::post('manage-common-uses/update','Modules\Doctor\DoctorController@commonUseUpdates')->name('admin.manage.doctor.common.use.update');
+
+    Route::get('manage-common-uses/delete/{id}','Modules\Doctor\DoctorController@commonUseDelete')->name('admin.manage.doctor.common.use.delete');
 
     // manage-contact-us 
     Route::get('manage-contact-us','Modules\Contact\ContactController@contact')->name('admin.contact.page');
     Route::post('manage-contact-us/update','Modules\Contact\ContactController@contactUpdate')->name('admin.contact.page.update');
+
+    Route::get('manage-contact-us/manage-heading','Modules\Heading\HeadingController@contactHeading')->name('admin.contact.page.manage.heading');
+
+    Route::get('manage-contact-us/manage-heading/add','Modules\Heading\HeadingController@contactHeadingAdd')->name('admin.contact.page.manage.heading.add');
+
+    Route::get('manage-contact-us/manage-heading/edit/{id}','Modules\Heading\HeadingController@contactHeadingEdit')->name('admin.contact.page.manage.heading.edit');
+
+
+    Route::get('manage-contact-us/manage-sub-heading','Modules\Heading\HeadingController@contactSubHeading')->name('admin.contact.page.manage.sub.heading');
+
+    Route::get('manage-contact-us/manage-sub-heading/add','Modules\Heading\HeadingController@contactSubHeadingAdd')->name('admin.contact.page.manage.sub.heading.add');
+
+    Route::get('manage-contact-us/manage-sub-heading/edit/{id}','Modules\Heading\HeadingController@contactSubHeadingEdit')->name('admin.contact.page.manage.sub.heading.edit');
+
 
     // manage-suggestion
     Route::get('manage-suggestion','Modules\Suggestion\SuggestionController@index')->name('admin.manage.suggestion');
@@ -188,7 +214,13 @@ Route::group(['namespace' => 'Admin'], function() {
       Route::get('manage-footer','Modules\Fotter\FotterController@index')->name('admin.manage.fotter');
       Route::post('manage-footer/update','Modules\Fotter\FotterController@update')->name('admin.manage.fotter.update');
 
+      // font 
+      Route::get('manage-font','Modules\Fotter\FotterController@fontIndex')->name('admin.manange.font');
+      Route::post('manage-font/update','Modules\Fotter\FotterController@fontUpdate')->name('admin.manange.font.update');
 
+      // manage-email-text
+      Route::get('manage-email-text','Modules\Fotter\FotterController@template')->name('admin.manage.template');
+      Route::post('manage-email-text/update','Modules\Fotter\FotterController@templateUpdate')->name('admin.manage.template.update');
 
 
 

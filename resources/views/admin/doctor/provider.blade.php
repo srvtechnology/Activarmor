@@ -54,7 +54,7 @@
                              <form method="post" action="{{route('manage.doctor.provider.upload')}}" enctype="multipart/form-data" id="provider">
                         @csrf    
                             <div class="form-group">
-                                        <label for="Email">Image</label>
+                                        <label for="Email">Image (W X H : 107 X 107PX)</label>
                                         <div class="uplodimgfil">
                                             <input type="file" name="image" id="icon" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" onchange="fun1()" />
                                            {{--  <input type="file" id="icon" name="image"   class="inputfile inputfile-1" onchange="fun1()">

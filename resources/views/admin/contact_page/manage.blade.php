@@ -62,6 +62,11 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h4 class="pull-left page-title">Manage Contact Page</h4>
+                    <ol class="breadcrumb pull-right">
+                    <li class="active"><a href="{{route('admin.contact.page.manage.heading')}}">Heading Management</a></li>
+                    
+                    <li class="active"><a href="{{route('admin.contact.page.manage.sub.heading')}}">Sub Heading Management</a></li>
+                  </ol>
                     
                 </div>
             </div>
@@ -96,7 +101,7 @@
                                 
 
                                   <div class="form-group">
-                                        <label for="Email">Image</label>
+                                        <label for="Email">Image (W X H : 1707 × 508 px)</label>
                                         <div class="uplodimgfil">
                                             <input type="file" name="image" id="icon" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" onchange="fun1()" />
                                            {{--  <input type="file" id="icon" name="image"   class="inputfile inputfile-1" onchange="fun1()">
@@ -109,7 +114,7 @@
                                   <div class="clearfix"></div>
 
                                   <div class="form-group">
-                                        <label for="Email">Contact BG Image</label>
+                                        <label for="Email">Contact BG Image (W X H : 1750 × 802 px)</label>
                                         <div class="uplodimgfil">
                                             <input type="file" name="bg_image" id="icon2"  onchange="fun2()" />
                                            {{--  <input type="file" id="icon" name="image"   class="inputfile inputfile-1" onchange="fun1()">

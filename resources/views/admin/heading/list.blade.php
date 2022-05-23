@@ -38,6 +38,8 @@
                         <li class="active"><a href="{{route('admin.manage.heading.banner.add')}}">+ Add Heading</a></li>
                         @elseif(@$type=="D")
                         <li class="active"><a href="{{route('admin.manage.doctor.banner.heading.add.view')}}">+ Add Heading</a></li>
+                        @elseif(@$type=="C")
+                        <li class="active"><a href="{{route('admin.contact.page.manage.heading.add')}}">+ Add Heading</a></li>
                         @else
                         <li class="active"><a href="{{route('admin.manage.doctor.banner.heading.add.view')}}">+ Add Heading</a></li>
                         @endif
@@ -79,6 +81,8 @@
                                                                 <li><a href="{{route('admin.manage.heading.banner.edit',['id'=>@$value->id])}}">Edit </a></li>
                                                                 @elseif(@$value->type=="P")
                                                                 <li><a href="{{route('admin.manage.patient.banner.heading.edit.view',['id'=>@$value->id])}}">Edit </a></li>
+                                                                @elseif(@$value->type=="C")
+                                                                <li><a href="{{route('admin.contact.page.manage.heading.edit',['id'=>@$value->id])}}">Edit </a></li>
                                                                 @else
                                                                 <li><a href="{{route('admin.manage.doctor.banner.heading.edit.view',['id'=>@$value->id])}}">Edit </a></li>
                                                                 @endif

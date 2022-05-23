@@ -30,7 +30,7 @@
 
                 
 
-                <li><a href="{{route('admin.dashboard')}}" class="waves-effect @if(Request::segment(2)=="") active @endif"><i class="fa fa-money"></i><span>Banner Management</span></a></li>
+                <li><a href="{{route('admin.dashboard')}}" class="waves-effect @if(Request::segment(2)==""|| Request::segment(2)=="banner") active @endif"><i class="fa fa-money"></i><span>Banner Management</span></a></li>
 
                 <li><a href="{{route('admin.manage.what')}}" class="waves-effect @if(Request::segment(2)=="what-section") active @endif"><i class="fa fa-quote-left" aria-hidden="true"></i><span>What Content Management</span></a></li>
 
@@ -99,6 +99,10 @@
                 <li><a href="{{route('admin.manage.navbar')}}" class="waves-effect @if(Request::segment(2)=="manage-navbar") active @endif"><i class="fa fa-link" aria-hidden="true"></i><span> Manage Navbar Links</span></a></li>
 
                 <li><a href="{{route('admin.manage.fotter')}}" class="waves-effect @if(Request::segment(2)=="manage-footer") active @endif"><i class="fa fa-forumbee" aria-hidden="true"></i><span> Manage Fotter</span></a></li>
+
+                <li><a href="{{route('admin.manange.font')}}" class="waves-effect @if(Request::segment(2)=="manage-font") active @endif"><i class="fa fa-font" aria-hidden="true"></i><span> Manage Font</span></a></li>
+
+                <li><a href="{{route('admin.manage.template')}}" class="waves-effect @if(Request::segment(2)=="manage-email-text") active @endif"><i class="fa fa-envelope" aria-hidden="true"></i><span> Email Text</span></a></li>
 
 
 

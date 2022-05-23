@@ -2,7 +2,7 @@
 
 
 @section('title')
-<title>Activarmor | Manage Sub Heading</title>
+<title>Activarmor | Manage Uses</title>
 @endsection
 
 @section('style')
@@ -32,17 +32,9 @@
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
-                    <h4 class="pull-left page-title">Manage Sub Heading</h4>
+                    <h4 class="pull-left page-title">Manage Uses</h4>
                     <ol class="breadcrumb pull-right">
-                        @if(@$type=="B")
-                        <li class="active"><a href="{{route('admin.manage.sub.heading.banner.add.view')}}">+ Add Sub Heading</a></li>
-                        @elseif(@$type=="D")
-                        <li class="active"><a href="{{route('admin.manage.doctor.banner.sub.heading.add.view')}}">+ Add Sub Heading</a></li>
-                        @elseif(@$type=="C")
-                        <li class="active"><a href="{{route('admin.contact.page.manage.sub.heading.add')}}">+ Add Sub Heading</a></li>
-                        @else
-                        <li class="active"><a href="{{route('admin.manage.patient.banner.sub.heading.add.view')}}">+ Add Sub Heading</a></li>
-                        @endif
+                        <li class="active"><a href="{{route('admin.manage.doctor.common.use.add.view')}}">+ Add Uses</a></li>
                         
                     </ol>
                 </div>
@@ -60,7 +52,7 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                   <th>Sub Heading</th>
+                                                   <th>Title</th>
                                                    <th class="rm07">Action</th>
                                                 </tr>
                                             </thead>
@@ -68,7 +60,13 @@
                                                 @if(@$data->isNotEmpty())
                                                 @foreach (@$data as $value)
                                                 <tr>
-                                                    <td>{!!@$value->name!!}</td>
+                                                    <td> 
+                                                      @if(strlen(@$value->name) >60)
+                                                        {!! substr(@$value->name, 0, 60 ) . '...' !!}
+                                                      @else
+                                                      {{@$value->name}}
+                                                      @endif
+                                                     </td>
                                                     
                                                   
                                                    <td class="rm07">
@@ -76,21 +74,9 @@
                                                         <div class="show-actions" id="show-{{$value->id}}" style="display: none;">
                                                             <span class="angle custom_angle"><img src="{{ URL::to('public/admin/assets/images/angle.png')}}" alt=""></span>
                                                             <ul>
+                                                                <li><a href="{{route('admin.manage.doctor.common.use.edit',['id'=>@$value->id])}}">Edit </a></li>
 
-                                                                @if(@$value->type=="B")
-                                                                <li><a href="{{route('admin.manage.sub.heading.banner.edit',['id'=>@$value->id])}}">Edit </a></li>
-                                                                @elseif(@$value->type=="P")
-                                                                <li><a href="{{route('admin.manage.patient.banner.sub.heading.edit.view',['id'=>@$value->id])}}">Edit </a></li>
-                                                                @elseif(@$value->type=="C")
-                                                                <li><a href="{{route('admin.contact.page.manage.sub.heading.edit',['id'=>@$value->id])}}">Edit </a></li>
-                                                                @else
-                                                                <li><a href="{{route('admin.manage.doctor.banner.sub.heading.edit.view',['id'=>@$value->id])}}">Edit </a></li>
-                                                                @endif
-
-
-
-
-                                                                <li><a href="{{route('admin.manage.sub.heading.delete',['id'=>@$value->id])}}" onclick="return confirm('Are you sure want to delete this ?')">Delete </a></li>
+                                                                <li><a href="{{route('admin.manage.doctor.common.use.delete',['id'=>@$value->id])}}">Delete </a></li>
                                                                
 
                                                                 

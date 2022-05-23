@@ -20,6 +20,9 @@ use App\Models\Prescription;
 use App\Models\Pdf;
 use App\Mail\SuggestionMail;
 use App\Mail\PrescriptionMail;
+use App\Heading;
+use App\SubHeading;
+use App\Doctoruse;
 use Mail;
 class PageController extends Controller
 {
@@ -31,6 +34,9 @@ class PageController extends Controller
     	$data['what_content'] = WhatContent::get();
     	$data['why'] = Why::where('id',1)->first();
     	$data['why_content'] = WhyContent::get();
+        $data['heading'] = Heading::where('type','B')->get();
+        $data['sub_heading'] = SubHeading::where('type','B')->get();
+        $data['contact'] = ContactPage::where('id',1)->first();
     	return view('welcome',$data);
     }
 
@@ -40,6 +46,9 @@ class PageController extends Controller
         $data['banner'] = Banner::where('id',2)->first();
         $data['empower'] = Empower::get();
         $data['uses'] = Uses::get(); 
+        $data['heading'] = Heading::where('type','P')->get();
+        $data['sub_heading'] = SubHeading::where('type','P')->get();
+        $data['contact'] = ContactPage::where('id',1)->first();
         return view('pages.patient',$data);
     }
 
@@ -52,6 +61,10 @@ class PageController extends Controller
         $data['provider'] = Provider::get();
         $data['common'] = CommonUse::where('id',1)->first();
         $data['pdf'] = Pdf::get();
+        $data['heading'] = Heading::where('type','D')->get();
+        $data['sub_heading'] = SubHeading::where('type','D')->get();
+        $data['contact'] = ContactPage::where('id',1)->first();
+        $data['uses'] = Doctoruse::get(); 
         return view('pages.doctor',$data);
     }
 
@@ -60,6 +73,10 @@ class PageController extends Controller
     {
         $data = [];
         $data['data'] = ContactPage::where('id',1)->first();
+        // return $data['data'];
+        $data['contact'] = ContactPage::where('id',1)->first();
+        $data['heading'] = Heading::where('type','C')->get();
+        $data['sub_heading'] = SubHeading::where('type','C')->get();
         return view('pages.contact',$data);
     }
 

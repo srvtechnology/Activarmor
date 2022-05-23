@@ -12,3 +12,5 @@
 <link href="{{ URL::to('public/admin/icofont/icofont.min.css')}}" rel="stylesheet">
 <link href="{{ URL::to('public/admin/assets/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="{{ URL::to('public/frontend/css/chosen.css')}}">
+
+

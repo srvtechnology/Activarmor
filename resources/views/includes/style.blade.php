@@ -42,3 +42,51 @@
     <link href="{{ URL::to('public/frontend/assets/css/contact.css')}}" rel="stylesheet" type="text/css">
     @endif
      
+
+     @php
+     $wp = DB::table('fotter')->where('id',1)->first();
+     @endphp
+     <a href="https://wa.me/{{$wp->wp}}" class="whatsapp_float" target="_blank"><i class="fab fa-whatsapp" style="margin-top: 14px;"></i></a>
+
+     <style type="text/css">
+  /*whatsapp*/
+.whatsapp_float {
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:#25d366;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+        font-size:30px;
+  box-shadow: 2px 2px 3px #999;
+        z-index:100;
+}
+
+.whatsapp-icon {
+  margin-top:16px;
+}
+/* for mobile */
+@media screen and (max-width: 767px){
+     .whatsapp-icon {
+   margin-top:20px;
+     }
+    .whatsapp_float {
+        width: 50px;
+        height: 60px;
+        bottom: 20px;
+        right: 10px;
+        font-size: 22px;
+    }
+}
+</style>
+@php
+$font = DB::table('font')->where('id',1)->first();
+@endphp
+<style type="text/css">
+  *{
+    font-family: {{$font->name}};
+  }
+</style>

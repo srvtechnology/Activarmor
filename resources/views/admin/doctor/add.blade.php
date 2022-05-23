@@ -2,7 +2,7 @@
 
 
 @section('title')
-<title>Activarmor | Add Heading</title>
+<title>Activarmor | Add Uses</title>
 @endsection
 
 @section('style')
@@ -32,17 +32,9 @@
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
-                    <h4 class="pull-left page-title">Add Heading</h4>
+                    <h4 class="pull-left page-title">Add Uses</h4>
                     <ol class="breadcrumb pull-right">
-                        @if(@$type=="B")
-                        <li class="active"><a href="{{route('admin.manage.heading.banner')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></li>
-                        @elseif(@$type=="D")
-                        <li class="active"><a href="{{route('admin.manage.doctor.banner.heading.view')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></li>
-                        @elseif(@$type=="C")
-                        <li class="active"><a href="{{route('admin.contact.page.manage.heading')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></li>
-                        @else
-                        <li class="active"><a href="{{route('admin.manage.patient.banner.heading.view')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></li>
-                        @endif
+                        <li class="active"><a href="{{route('admin.manage.doctor.common.use.list')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></li>
                     </ol>
                 </div>
             </div>
@@ -53,19 +45,19 @@
                         <!-- Personal-Information -->
                         <div class="panel panel-default panel-fill">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Add Heading</h3>
+                                <h3 class="panel-title">Add Uses</h3>
                             </div>
                             <div class="panel-body rm02 rm04">
-                                <form role="form" action="{{route('admin.manage.heading.insert')}}" method="POST" id="faq_form" enctype="multipart/form-data">
+                                <form role="form" action="{{route('admin.manage.doctor.common.use.insert')}}" method="POST" id="faq_form" enctype="multipart/form-data">
                                     @csrf
 
-                                    <input type="hidden" name="type" value="{{@$type}}">
+                                    {{-- <input type="hidden" name="id" value="{{@$data->id}}"> --}}
 
 
                                    
                                     <div class="form-group rm03">
-                                                <label for="AboutMe">Heading</label>
-                                                <input type="text"  name="name"  class="form-control" id="mytextarea"  placeholder="Heading" required> 
+                                                <label for="AboutMe">Title</label>
+                                                <input type="text"  name="title"  class="form-control"  placeholder="title">
                                     </div>
 
                                     
@@ -102,48 +94,27 @@
 <script src="{{ URL::to('public/tiny_mce/tinymce.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
-
-
-<script type="text/javascript">
-    tinymce.init({
-    selector: "#mytextarea",
-    forced_root_block : "",
-    relative_urls : false,
-    entity_encoding: 'raw',
-
-    
-     plugins: [
-    
-    
-  
-    
-    "emoticons template paste textcolor colorpicker textpattern imagetools"
-    ],
-    toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft     aligncenter alignright alignjustify | bullist numlist outdent indent | link     image",
-    toolbar2: "print preview media | forecolor backcolor emoticons",
-    toolbar3: "cut,copy,paste,pastetext,pasteword,|outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,|,insertdate,inserttime,preview",
-    toolbar4: "numlist bullist",
-    image_advtab: true,
-    templates: [
-    {title: 'Test template 1', content: 'Test 1'},
-    {title: 'Test template 2', content: 'Test 2'}
-    ]
-    });
-    
-    </script>
-
-
+<script>
+        function fun1(){
+        var i=document.getElementById('icon').files[0];
+        var b=URL.createObjectURL(i);
+        $("#img2").attr("src",b);
+    }
+</script>
 <script>
     $(document).ready(function(){
        $("#faq_form").validate({
-        submitHandler: function(form){
-            if(tinyMCE.get('mytextarea').getContent()==""){
-              alert('Please enter heading');
-              return false;
-            }else{
-                form.submit();
-            }
-           } 
+         rules: {
+            title:{
+                required:true,
+               },
+         },
+            
+        messages: {
+            title:{
+              required:'please enter title',
+            }, 
+         },
       });
     })
 </script>

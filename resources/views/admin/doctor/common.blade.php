@@ -62,6 +62,9 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h4 class="pull-left page-title">Manage Common Use</h4>
+                    <ol class="breadcrumb pull-right">
+                     <li class="active"><a href="{{route('admin.manage.doctor.common.use.list')}}"> + Add Common Uses</a></li>
+                  </ol>
                     
                 </div>
             </div>
@@ -71,7 +74,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading rm02 rm04">
                           @include('admin.includes.message')
-                            <form role="form" action="{{route('admin.manage.common.use.update')}}" method="post" id="banner" enctype="multipart/form-data">
+                            <form role="form" action="{{route('admin.manage.common.use.update.new')}}" method="post" id="banner" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="page" value="" id="page">
 
@@ -96,7 +99,7 @@
                                 
 
                                   <div class="form-group">
-                                        <label for="Email">Image</label>
+                                        <label for="Email">Image (W X H : 445 × 492 px)</label>
                                         <div class="uplodimgfil">
                                             <input type="file" name="image" id="icon" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" onchange="fun1()" />
                                            {{--  <input type="file" id="icon" name="image"   class="inputfile inputfile-1" onchange="fun1()">
@@ -113,11 +116,11 @@
                                         <input type="text" name="heading" class="form-control" value="{{@$data->heading}}">
                                    </div>
 
-                                   <div class="form-group rm03">
+                                   {{-- <div class="form-group rm03">
                                         <label for="Email">Description</label>
                                         <textarea rows="5" class="form-control" name="description">{{@$data->description}}</textarea>
                                         
-                                  </div>
+                                  </div> --}}
 
                                   
 

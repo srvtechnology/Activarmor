@@ -38,6 +38,8 @@
                         <li class="active"><a href="{{route('admin.manage.heading.banner')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></li>
                         @elseif(@$data->type=="D")
                         <li class="active"><a href="{{route('admin.manage.doctor.banner.heading.view')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></li>
+                        @elseif(@$data->type=="C")
+                        <li class="active"><a href="{{route('admin.contact.page.manage.heading')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></li>
                         @else
                         <li class="active"><a href="{{route('admin.manage.patient.banner.heading.view')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></li>
                         @endif

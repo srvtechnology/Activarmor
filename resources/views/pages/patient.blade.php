@@ -10,7 +10,12 @@
 </style> 
 @endsection
 
+@php
+ $data = DB::table('image')->where('id',1)->first();
+@endphp
 
+<meta property="og:url" content="{{URL::current()}}">
+<meta property="og:image" content="{{ URL::to('storage/app/public/logo')}}/{{@$data->logo}}" alt="">
 
 
 
@@ -30,15 +35,20 @@
   background-size: cover;
   background-repeat: no-repeat;">
       <div class="max-theme-width">
+        <div class="heading">
+            @foreach(@$heading as $value)
+            <h4 class="custom">{!!@$value->name!!}</h4>
+            @endforeach
+            
+          </div>
           <div class="list-main my-auto">
+            @foreach(@$sub_heading as $value)
             <div class="list-item">
               <img src="{{asset('public/frontend/assets/img/home/banner/check.png')}}" alt="" />
-              <span>{{@$banner->heading_one}}</span>
+              <span>{!!@$value->name!!}</span>
             </div>
-            <div class="list-item">
-              <img src="{{asset('public/frontend/assets/img/home/banner/check.png')}}" alt="" />
-              <span>{{@$banner->heading_two}}</span>
-            </div>
+            @endforeach
+            
           </div>
         </div>
       </div>
@@ -100,7 +110,12 @@
     </div>
 
   <!-- -- contact --  -->
-    <div class="contact-us section-padding" id="contact_section">
+    <div class="contact-us section-padding" id="contact_section" style="background: url({{url('/')}}/storage/app/public/bg_image/{{$contact->bg_image}});background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+  transform: translateY(0px);">
       <div class="max-theme-width">
         <h4 class="heading">CONTACT US</h4>
         <p class="para">
@@ -140,7 +155,7 @@
                <select class="form-control" name="country">
                 <option value="">Select Country</option>
                 @foreach($countries as $value) 
-                 <option value="{{@$value->name}} - {{@$value->sortname}}">{{@$value->name}} ({{@$value->sortname}})</option>
+                 <option value="{{@$value->name}} - {{+ @$value->phonecode}}">{{@$value->name}} (+ {{@$value->phonecode}})</option>
                   @endforeach
                </select>
               

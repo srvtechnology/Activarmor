@@ -85,7 +85,7 @@
                                   </div>
 
                                   <div class="form-group">
-                                        <label for="Email">Image</label>
+                                        <label for="Email">Image (W X H : 474 × 649 px)</label>
                                         <div class="uplodimgfil">
                                             <input type="file" name="image" id="icon" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" onchange="fun1()" />
                                            {{--  <input type="file" id="icon" name="image"   class="inputfile inputfile-1" onchange="fun1()">

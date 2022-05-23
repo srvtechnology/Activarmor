@@ -22,11 +22,15 @@
         </div>
         <div style="max-width:620px; border:1px solid #d9d8d8; margin:0 0; padding:15px; ">
 
+            @php
+            $text = DB::table('template')->where('id',1)->first();
+            @endphp
+
             <div style="display:block; overflow:hidden; width:100%;">
 
                 Dear {{@$data['first_name']}} {{$data['last_name']}},
                 <p>
-                   To verify the message.Please <a href="{{route('verify.email',['id'=>$data['id']])}}">click here.</a>
+                   {{$text->verify}}.<a href="{{route('verify.email',['id'=>$data['id']])}}">click here.</a>
                 </p>
 
             </div>

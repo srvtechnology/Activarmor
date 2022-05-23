@@ -38,6 +38,8 @@
                         <li class="active"><a href="{{route('admin.manage.sub.heading.banner')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></li>
                         @elseif(@$type=="D")
                         <li class="active"><a href="{{route('admin.manage.doctor.banner.sub.heading.view')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></li> 
+                        @elseif(@$type=="C")
+                        <li class="active"><a href="{{route('admin.contact.page.manage.sub.heading')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></li> 
                         @else
                         <li class="active"><a href="{{route('admin.manage.patient.banner.sub.heading.view')}}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></li>  
                         @endif

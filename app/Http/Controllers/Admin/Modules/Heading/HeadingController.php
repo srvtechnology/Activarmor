@@ -32,6 +32,14 @@ class HeadingController extends Controller
     	return view('admin.heading.list',$data);
     }
 
+    public function contactHeading()
+    {
+        $data = [];
+        $data['data'] = Heading::where('type','C')->paginate(10);
+        $data['type']='C';
+        return view('admin.heading.list',$data);
+    }
+
     public function addView()
     {
     	$data = [];
@@ -51,6 +59,13 @@ class HeadingController extends Controller
     	$data = [];
     	$data['type'] = 'P';
     	return view('admin.heading.add',$data);
+    }
+
+    public function contactHeadingAdd()
+    {
+        $data = [];
+        $data['type'] = 'C';
+        return view('admin.heading.add',$data);
     }
 
     
@@ -83,6 +98,13 @@ class HeadingController extends Controller
     	$data = [];
     	$data['data'] = Heading::where('id',$id)->first();
     	return view('admin.heading.edit',$data);
+    }
+
+    public function contactHeadingEdit($id)
+    {
+        $data = [];
+        $data['data'] = Heading::where('id',$id)->first();
+        return view('admin.heading.edit',$data);
     }
 
 
@@ -128,6 +150,14 @@ class HeadingController extends Controller
     	return view('admin.sub_heading.index',$data);
     }
 
+    public function contactSubHeading()
+    {
+        $data = [];
+        $data['data'] = SubHeading::where('type','C')->paginate(10);
+        $data['type']='C';
+        return view('admin.sub_heading.index',$data);
+    }
+
     public function subHeadingaddView()
     {
     	$data = [];
@@ -147,6 +177,13 @@ class HeadingController extends Controller
     	$data = [];
     	$data['type'] = 'P';
     	return view('admin.sub_heading.add',$data);
+    }
+
+    public function contactSubHeadingAdd()
+    {
+        $data = [];
+        $data['type'] = 'C';
+        return view('admin.sub_heading.add',$data);
     }
 
     
@@ -180,6 +217,13 @@ class HeadingController extends Controller
     	$data = [];
     	$data['data'] = SubHeading::where('id',$id)->first();
     	return view('admin.sub_heading.edit',$data);
+    }
+
+    public function contactSubHeadingEdit($id)
+    {
+        $data = [];
+        $data['data'] = SubHeading::where('id',$id)->first();
+        return view('admin.sub_heading.edit',$data);
     }
 
     public function updateSubHeading(Request $request)

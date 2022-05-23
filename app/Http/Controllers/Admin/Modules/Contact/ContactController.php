@@ -81,4 +81,7 @@ class ContactController extends Controller
         ContactPage::where('id',1)->update($upd);
         return redirect()->back()->with('success','Data Updated Succesfully');
     }
+
+
+    
 }

@@ -10,6 +10,7 @@ use Image;
 use App\Models\Provider;
 use App\Models\CommonUse;
 use App\Youtube;
+use App\Doctoruse;
 class DoctorController extends Controller
 {
 
@@ -165,13 +166,56 @@ class DoctorController extends Controller
 
     public function youtubeUpdate(Request $request)
     {
-        parse_str( parse_url($request->link, PHP_URL_QUERY ), $my_array_of_vars );
-
+        
+        $explode = explode('v=', @$request->link);
+        $image_name = end($explode);
+        
         // return ;    
         $upd = [];
         $upd['link'] = $request->link;
-        $upd['code'] = $my_array_of_vars['v'];
+        $upd['code'] = $image_name;
         Youtube::where('id',1)->update($upd);
         return redirect()->back()->with('success','Youtube Link Updated Successfully');
+    }
+
+    public function commonUseList()
+    {
+        $data = [];
+        $data['data'] = Doctoruse::paginate(10);
+        return view('admin.doctor.list',$data);
+    }
+
+    public function commonUseAddView()
+    {
+        return view('admin.doctor.add');
+    }
+
+    public function commonUseInsert(Request $request)
+    {
+        $use = new Doctoruse;
+        $use->name = $request->title;
+        $use->save();
+        return redirect()->back()->with('success','Data Added Successfully');
+    }
+
+    public function commonUseEdit($id)
+    {
+        $data = [];
+        $data['data'] = Doctoruse::where('id',$id)->first();
+        return view('admin.doctor.edit',$data);
+    }
+
+    public function commonUseUpdates(Request $request)
+    {
+        Doctoruse::where('id',$request->id)->update([
+            'name'=>$request->title,
+        ]);
+        return redirect()->back()->with('success','Data Updated Successfully');
+    }
+
+    public function commonUseDelete($id)
+    {
+        Doctoruse::where('id',$id)->delete();
+        return redirect()->back()->with('success','Data Deleted Successfully');
     }
 }
